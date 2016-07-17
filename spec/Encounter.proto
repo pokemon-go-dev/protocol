@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message EncounterRequest {
+	double lat = 3;
+	double lon = 4;
+}
+

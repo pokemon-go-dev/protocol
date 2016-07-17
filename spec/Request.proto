@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "spec/Envelope.proto";
+import "spec/holoholo_shared.proto";
+
+message JWT {
+	string contents = 1;
+}
+
+message AuthInfo {
+	// One of:
+	//   "google"
+	string provider = 1;
+	JWT token = 2;
+}
+
+message Request {
+	Holoholo.Rpc.Method method = 1;
+	bytes payload = 2;
+}
+
+message RequestEnvelope {
+	Direction direction = 1;
+
+	uint64 id = 3;
+
+	repeated Request requests = 4;
+
+	double latitude = 7;
+	double longitude = 8;
+	double altitude = 9;
+
+	AuthInfo auth_info = 10;
+	// TODO: 11
+	int64 transaction_id = 12;
+}
+

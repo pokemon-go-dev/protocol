@@ -1,0 +1,12 @@
+syntax = "proto3";
+import "spec/Envelope.proto";
+
+message ResponseEnvelope {
+	Direction direction = 1;
+
+	uint64 id = 2;
+	string endpoint = 3;
+
+	repeated bytes responses = 100;
+}
+

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+enum Team {
+	NEUTRAL = 0;
+	MYSTIC = 1;
+	VALOR = 2;
+	INSTINCT = 3;
+}
+
+message GetPlayerResponse {
+	bool success = 1;
+	Player player = 2;
+}
+
+message Player {
+	// The number of milliseconds since the epoch.
+	int64 creation_timestamp = 1;
+	
+	string player_name = 2;
+	
+	Team team = 5;
+
+	Avatar avatar = 8;
+	
+	// The amount of pokemon that the player can carry.
+	int32 pokemon_storage_size = 9;
+	
+	// The amount of items the player can carry.
+	int32 bag_size = 10;
+
+	repeated Valuable valuables = 14;
+}
+
+// enum Hair {
+// 	UNKNOWN = 0;
+// 	BLACK = 2;
+// }
+// 
+// enum Shirt {
+// 	UNKNOWN = 0;
+// 	YELLOW = 2;
+// }
+// 
+// enum Pants {
+// 	UNKNOWN = 0;
+// }
+// 
+// enum Hat {
+// 	UNKNOWN = 0;
+// }
+// 
+// enum Shoes {
+// 	UNKNOWN = 0;
+// }
+// 
+// enum Eyes {
+// 	UNKNOWN = 0;
+// }
+// 
+// enum Backpack {
+// 	UNKNOWN = 0;
+// }
+
+message Avatar {
+	int32 hair = 3;
+	int32 shirt = 4;
+	int32 pants = 5;
+	int32 hat = 6;
+	int32 shoes = 7;
+	int32 eyes = 9;
+	int32 backpack = 10;
+}
+
+message Valuable {
+	string item = 1;
+	int32 count = 2;
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "spec/holoholo_shared.proto";
+
+message GetMapObjectsRequest {
+	repeated TileIds tiles = 1;
+
+	double lat = 3;
+	double lon = 4;
+}
+
+message GetMapObjectsResponse {
+	repeated MapCell cells = 1;
+}
+
+message TileIds {
+	// The tile s2
+	repeated int64 tile = 134217728;
+}
+
+message MapCell {
+	int64 cell_id = 1;
+	int64 timestamp = 2;
+
+	repeated Fort forts = 3;
+	repeated SpawnPoint spawns = 9;
+	repeated NearbyPokemon nearby = 11;
+}
+
+message Fort {
+	string id = 1;
+
+	// The time of the last update.
+	int64 timestamp = 2;
+
+	double lat = 3;
+	double lon = 4;
+
+	bool enabled = 8;
+	Holoholo.Rpc.FortType type = 9;
+}
+
+message SpawnPoint {
+	double latitude = 2;
+	double longitude = 3;
+}
+
+message NearbyPokemon {
+	Holoholo.Rpc.Custom_PokemonName pokemon = 1;
+	float distance = 2;
+	fixed64 encounter_id = 3;
+}
+

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message DownloadSettingsResponse {
+	// 0.29.2: 05daf51635c82611d1aac95c0b051d3ec088a930
+	string hash = 2;
+
+	Limits limits = 5;
+	string version = 6;
+}
+
+message Limits {
+	int32 bag = 3;
+	int32 pokemon = 4;
+	int32 eggs = 5;
+}
+
+message CheckAwardedBadgesResponse {
+	bool success = 1;
+}
+
